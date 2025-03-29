@@ -1,0 +1,30 @@
+def mainClassName = "espada.authlogger.module.AuthLoggerModule"
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+repositories {
+    maven { url 'https://jitpack.io' }
+    maven {
+        url 'https://maven.gravit-support.ru/repository/jitpack'
+        credentials {
+            username = 'gravitlauncher'
+            password = 'gravitlauncher'
+        }
+    }
+}
+
+dependencies {
+    compileOnly 'pro.gravit.launcher:launchserver-api:5.5.3' // Только для компиляции, не включается в JAR
+    implementation 'org.apache.httpcomponents:httpclient:4.5.14' // Для HTTP-запросов в Discord
+}
+
+jar {
+    manifest {
+        attributes(
+                'Manifest-Version': '1.0',
+                'Module-Main-Class': 'espada.authlogger.module.AuthLoggerModule'
+        )
+    }
+    archiveFileName = 'AuthLoggerModule_module.jar' // Имя выходного JAR
+}
